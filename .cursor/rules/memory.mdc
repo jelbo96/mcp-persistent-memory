@@ -1,0 +1,58 @@
+---
+description: Reglas de memoria persistente para el agente AI en Cursor
+globs:
+alwaysApply: true
+---
+
+# Memoria Persistente
+
+Tienes acceso a un servidor MCP de memoria persistente (`redis-memory-server`). Usalo activamente para recordar y recuperar informacion entre sesiones.
+
+## Convenciones de identificacion
+
+- `user_id`: `"ignaciojelvez"`
+- `namespace`: `"cursor"`
+- `session_id`: `"repo:<nombre-del-repo>"` (ejemplo: `"repo:mi-proyecto-web"`)
+
+Determina el nombre del repo a partir del directorio de trabajo actual (ultimo segmento del path del workspace).
+
+## Antes de responder
+
+Cuando el usuario haga una pregunta sobre arquitectura, convenciones, decisiones previas o preferencias del proyecto:
+
+1. Usa `search_long_term_memory` filtrando por `session_id` del repo actual para buscar contexto relevante.
+2. Si no encuentras resultado especifico del repo, busca sin `session_id` para consultar memoria global.
+3. Incorpora el contexto encontrado en tu respuesta.
+
+## Despues de tomar decisiones
+
+Cuando se tome una decision de arquitectura, se defina una convencion, o el usuario exprese una preferencia:
+
+1. Usa `create_long_term_memories` para guardar un resumen conciso de la decision.
+2. Usa `memory_type: "semantic"` para preferencias/convenciones y `"episodic"` para decisiones puntuales.
+3. Incluye `topics` relevantes (ej: `["arquitectura", "testing", "estilo"]`).
+4. Incluye `entities` relevantes (ej: nombre del framework, libreria, patron).
+5. Siempre incluye `user_id`, `namespace` y `session_id` segun las convenciones de arriba.
+
+## Tipos de memoria
+
+- **semantic**: Conocimiento general, preferencias, convenciones (ej: "Usamos vitest para testing")
+- **episodic**: Eventos o decisiones puntuales (ej: "Se decidio migrar de REST a tRPC el 2024-03-15")
+
+## Ejemplo de uso
+
+Para guardar: "El usuario prefiere funciones puras y evita clases en TypeScript"
+
+```json
+{
+  "memories": [{
+    "text": "Prefiere funciones puras sobre clases en TypeScript. Evita el uso de any/unknown.",
+    "memory_type": "semantic",
+    "topics": ["typescript", "estilo", "convenciones"],
+    "entities": ["TypeScript"],
+    "user_id": "ignaciojelvez",
+    "namespace": "cursor",
+    "session_id": "repo:mi-proyecto"
+  }]
+}
+```
