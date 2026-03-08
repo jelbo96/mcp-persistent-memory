@@ -108,7 +108,7 @@ Cada memoria se identifica con:
 | Campo | Valor | Proposito |
 |---|---|---|
 | `user_id` | `"ignaciojelvez"` | Identificar al usuario |
-| `namespace` | `"agent"` | Agrupar memorias de Cursor |
+| `namespace` | `"agent"` | Agrupar memorias del agente |
 | `session_id` | `"repo:<nombre>"` | Aislar memorias por repositorio |
 
 Esto permite buscar solo en un repo (filtrando por `session_id`) o globalmente (omitiendo `session_id`).

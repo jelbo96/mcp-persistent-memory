@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-API="http://localhost:8000"
+API="http://localhost:18000"
 USER_ID="ignaciojelvez"
-NAMESPACE="cursor"
+NAMESPACE="agent"
 REPO="$(basename "$(git rev-parse --show-toplevel)")"
 SESSION_ID="repo:${REPO}"
 
