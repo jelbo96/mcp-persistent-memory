@@ -1,5 +1,5 @@
 ---
-description: Reglas de memoria persistente para el agente AI en Cursor
+description: Reglas de memoria persistente para agentes AI con soporte MCP
 globs:
 alwaysApply: true
 ---
@@ -11,7 +11,7 @@ Tienes acceso a un servidor MCP de memoria persistente (`redis-memory-server`). 
 ## Convenciones de identificacion
 
 - `user_id`: `"ignaciojelvez"`
-- `namespace`: `"cursor"`
+- `namespace`: `"agent"`
 - `session_id`: `"repo:<nombre-del-repo>"` (ejemplo: `"repo:mi-proyecto-web"`)
 
 Determina el nombre del repo a partir del directorio de trabajo actual (ultimo segmento del path del workspace).
@@ -51,7 +51,7 @@ Para guardar: "El usuario prefiere funciones puras y evita clases en TypeScript"
     "topics": ["typescript", "estilo", "convenciones"],
     "entities": ["TypeScript"],
     "user_id": "ignaciojelvez",
-    "namespace": "cursor",
+    "namespace": "agent",
     "session_id": "repo:mi-proyecto"
   }]
 }
