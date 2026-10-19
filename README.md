@@ -10,15 +10,15 @@ MCP Client (cualquier agente) <--SSE--> MCP Server (:9050) <--> Redis (vector se
                                         Task Worker (background)
 ```
 
-- **Anthropic** (Claude) para generacion, extraccion de topics y procesamiento de texto
-- **OpenAI** para embeddings vectoriales (`text-embedding-3-small`)
+- **OpenAI** para embeddings vectoriales (`text-embedding-3-small`) y para extraer topics, entidades y memorias (`gpt-5-mini`)
+
+> No usamos Claude para la extraccion: el servidor lee el JSON tal cual y Claude lo devuelve envuelto en ```` ```json ````, asi que la extraccion queda vacia.
 - **Redis Stack** para almacenamiento persistente con busqueda vectorial
 
 ## Requisitos
 
 - Docker y Docker Compose
-- API key de Anthropic (`ANTHROPIC_API_KEY`)
-- API key de OpenAI (`OPENAI_API_KEY`) - solo para embeddings
+- API key de OpenAI (`OPENAI_API_KEY`)
 
 ## Setup
 
@@ -31,7 +31,6 @@ cp .env.example .env
 Editar `.env` con tus keys reales:
 
 ```
-ANTHROPIC_API_KEY=sk-ant-tu-key-aqui
 OPENAI_API_KEY=sk-tu-key-aqui
 ```
 

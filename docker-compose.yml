@@ -35,8 +35,8 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - PORT=8000
-      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
-      - FAST_MODEL=anthropic/claude-haiku-5-5
+      - GENERATION_MODEL=gpt-5-mini
+      - FAST_MODEL=gpt-5-mini
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
@@ -63,8 +63,8 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - PORT=9000
-      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
-      - FAST_MODEL=anthropic/claude-haiku-5-5
+      - GENERATION_MODEL=gpt-5-mini
+      - FAST_MODEL=gpt-5-mini
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
@@ -84,8 +84,8 @@ services:
         required: true
     environment:
       - REDIS_URL=redis://redis:6379
-      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
-      - FAST_MODEL=anthropic/claude-haiku-5-5
+      - GENERATION_MODEL=gpt-5-mini
+      - FAST_MODEL=gpt-5-mini
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
