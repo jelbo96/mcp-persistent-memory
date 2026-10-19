@@ -26,7 +26,7 @@ services:
       - memory-network
 
   api:
-    image: redislabs/agent-memory-server:latest
+    image: redislabs/agent-memory-server:0.15.2
     ports:
       - "18000:8000"
     env_file:
@@ -35,8 +35,8 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - PORT=8000
-      - GENERATION_MODEL=claude-3-7-sonnet-latest
-      - FAST_MODEL=claude-3-5-haiku-latest
+      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
+      - FAST_MODEL=anthropic/claude-haiku-5-5
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
@@ -54,7 +54,7 @@ services:
       - memory-network
 
   mcp:
-    image: redislabs/agent-memory-server:latest
+    image: redislabs/agent-memory-server:0.15.2
     ports:
       - "9050:9000"
     env_file:
@@ -63,8 +63,8 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - PORT=9000
-      - GENERATION_MODEL=claude-3-7-sonnet-latest
-      - FAST_MODEL=claude-3-5-haiku-latest
+      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
+      - FAST_MODEL=anthropic/claude-haiku-5-5
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
@@ -78,14 +78,14 @@ services:
       - memory-network
 
   task-worker:
-    image: redislabs/agent-memory-server:latest
+    image: redislabs/agent-memory-server:0.15.2
     env_file:
       - path: .env
         required: true
     environment:
       - REDIS_URL=redis://redis:6379
-      - GENERATION_MODEL=claude-3-7-sonnet-latest
-      - FAST_MODEL=claude-3-5-haiku-latest
+      - GENERATION_MODEL=anthropic/claude-sonnet-5-5
+      - FAST_MODEL=anthropic/claude-haiku-5-5
       - EMBEDDING_MODEL=text-embedding-3-small
       - LONG_TERM_MEMORY=True
       - ENABLE_TOPIC_EXTRACTION=True
